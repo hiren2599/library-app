@@ -14,6 +14,7 @@ export const SearchBooksPage = () => {
 	const [totalAmountofBooks, setTotalAmountOfBooks] = useState(0);
 	const [search, setSearch] = useState("");
 	const [searchUrl, setSearchUrl] = useState("");
+	const [searchCategory, setSearchCategory] = useState("Book Category");
 
 	useEffect(() => {
 		const fetchBooks = async () => {
@@ -88,6 +89,24 @@ export const SearchBooksPage = () => {
 		}
 	};
 
+	const handleSearchCategoryChange = (selection: string) => {
+		switch (selection.toLowerCase()) {
+			case "fe":
+			case "be":
+			case "data":
+			case "devops":
+				setSearchCategory(selection);
+				setSearchUrl(
+					`/search/findByCategory?category=${selection}&page=0&size=${booksPerPage}`
+				);
+				break;
+			default:
+				setSearchCategory("All");
+				setSearchUrl(`?page=0&size=${booksPerPage}`);
+				break;
+		}
+	};
+
 	const lastIndexOfCurrentPage = currentPage * booksPerPage;
 	const firstIndexOfCurrentPage = lastIndexOfCurrentPage - booksPerPage;
 	const lastItem = Math.min(lastIndexOfCurrentPage, totalAmountofBooks);
@@ -123,33 +142,33 @@ export const SearchBooksPage = () => {
 									aria-expanded="false"
 									type="button"
 								>
-									Category
+									{searchCategory}
 								</button>
 								<ul
 									className="dropdown-menu"
 									aria-labelledby="dropDownMenuItem1"
 								>
-									<li>
+									<li onClick={() => handleSearchCategoryChange("All")}>
 										<a className="dropdown-item" href="#">
 											All
 										</a>
 									</li>
-									<li>
+									<li onClick={() => handleSearchCategoryChange("FE")}>
 										<a className="dropdown-item" href="#">
 											Coding - Front End
 										</a>
 									</li>
-									<li>
+									<li onClick={() => handleSearchCategoryChange("BE")}>
 										<a className="dropdown-item" href="#">
 											Coding - Back End
 										</a>
 									</li>
-									<li>
+									<li onClick={() => handleSearchCategoryChange("Data")}>
 										<a className="dropdown-item" href="#">
 											Coding - Data
 										</a>
 									</li>
-									<li>
+									<li onClick={() => handleSearchCategoryChange("Devops")}>
 										<a className="dropdown-item" href="#">
 											Coding - Devops
 										</a>
