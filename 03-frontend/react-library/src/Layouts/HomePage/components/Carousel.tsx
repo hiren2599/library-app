@@ -20,8 +20,23 @@ export const Carousel = () => {
 			}
 
 			const responseJson = await response.json();
+			const responseData = responseJson._embedded.books;
 
-			setBooks(responseJson._embedded.books);
+			const loadedBooks: BookModel[] = [];
+			for (const key in responseData) {
+				loadedBooks.push({
+					id: responseData[key].id,
+					title: responseData[key].title,
+					author: responseData[key].author,
+					description: responseData[key].description,
+					copies: responseData[key].copies,
+					copiesAvailable: responseData[key].copiesAvailable,
+					category: responseData[key].category,
+					img: responseData[key].img,
+				});
+			}
+
+			setBooks(loadedBooks);
 			setIsLoading(false);
 		};
 
