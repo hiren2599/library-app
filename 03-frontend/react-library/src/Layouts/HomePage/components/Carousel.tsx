@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export const Carousel = () => {
 	const [books, setBooks] = useState<BookModel[]>([]);
 	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState(null);
+	const [httpError, setHttpError] = useState(null);
 
 	useEffect(() => {
 		const fetchBooks = async () => {
@@ -42,7 +42,7 @@ export const Carousel = () => {
 		};
 
 		fetchBooks().catch((err) => {
-			setError(err.message);
+			setHttpError(err.message);
 			setIsLoading(false);
 		});
 	}, []);
@@ -51,10 +51,10 @@ export const Carousel = () => {
 		return <SpinnerLoading />;
 	}
 
-	if (error) {
+	if (httpError) {
 		return (
 			<div className="container m-5">
-				<p>{error}</p>
+				<p>{httpError}</p>
 			</div>
 		);
 	}
