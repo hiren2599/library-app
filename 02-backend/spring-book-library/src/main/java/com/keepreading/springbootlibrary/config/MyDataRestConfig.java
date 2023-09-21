@@ -7,6 +7,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 
 import com.keepreading.springbootlibrary.entity.Book;
+import com.keepreading.springbootlibrary.entity.Review;
 
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
@@ -23,6 +24,9 @@ public class MyDataRestConfig implements RepositoryRestConfigurer {
 			};
 		config.exposeIdsFor(Book.class);
 		disableHTTPMethods(Book.class, config, theUnsupportedActions);
+		
+		config.exposeIdsFor(Review.class);
+		disableHTTPMethods(Review.class, config, theUnsupportedActions);
 	
 		/* CORS Mapping */
 		
