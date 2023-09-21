@@ -31,7 +31,7 @@ public class Book {
 	private int copies;
 	
 	@Column(name = "copies_available")
-	private int copies_available;
+	private int copiesAvailable;
 	
 	@Column(name = "category")
 	private String category;
@@ -79,12 +79,12 @@ public class Book {
 		this.copies = copies;
 	}
 
-	public int getCopies_available() {
-		return copies_available;
+	public int getCopiesAvailable() {
+		return copiesAvailable;
 	}
 
-	public void setCopies_available(int copies_available) {
-		this.copies_available = copies_available;
+	public void setCopiesAvailable(int copiesAvailable) {
+		this.copiesAvailable = copiesAvailable;
 	}
 
 	public String getCategory() {
