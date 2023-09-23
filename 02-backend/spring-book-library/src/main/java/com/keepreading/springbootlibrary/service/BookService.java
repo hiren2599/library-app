@@ -34,7 +34,7 @@ public class BookService {
 		book.get().setCopiesAvailable(book.get().getCopiesAvailable() - 1);
 		bookRepository.save(book.get());
 		
-		checkoutRepository.save(new Checkout(userEmail, LocalDate.now().toString()o, LocalDate.now().plusDays(7).toString(), bookId))
+		checkoutRepository.save(new Checkout(userEmail, LocalDate.now().toString(), LocalDate.now().plusDays(7).toString(), bookId));
 		
 		return book.get();
 	}
