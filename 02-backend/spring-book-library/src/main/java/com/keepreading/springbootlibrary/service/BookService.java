@@ -66,6 +66,7 @@ public class BookService {
 		}
 		
 		List<Book> books = bookRepository.findAllById(bookIds);
+//		List<Book> books = bookRepository.findBooksByBookIds(bookIds);
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		for(Book book: books) {
@@ -84,8 +85,5 @@ public class BookService {
 		}
 		
 		return shelfCurrentLoansResponse;
-		
-		
-		
 	}
 }

@@ -25,7 +25,7 @@ public class BookController {
 	private BookService bookService;
 	
 	@GetMapping("/secure/currentloans")
-	public List<ShelfCurrentLoansResponse> currentLoans(@RequestHeader(value = "Authorization") String token,@RequestParam Long bookId) throws Exception {
+	public List<ShelfCurrentLoansResponse> currentLoans(@RequestHeader(value = "Authorization") String token) throws Exception {
 		String userEmail = ExtractJWT.payloadJWTExtraction(token, "\"sub\"");
 		return bookService.currentLoans(userEmail);
 	}
