@@ -19,7 +19,10 @@ export const LatestReviews: React.FC<{
 							<Review review={review} key={review.id} />
 						))}
 						<div className="m-3">
-							<Link to="/#" className="btn main-color text-white btn-md">
+							<Link
+								to={`/reviewList/${props.bookId}`}
+								className="btn main-color text-white btn-md"
+							>
 								Reach All Reviews
 							</Link>
 						</div>
