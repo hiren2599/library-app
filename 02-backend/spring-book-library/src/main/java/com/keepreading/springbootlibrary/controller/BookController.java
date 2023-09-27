@@ -1,5 +1,7 @@
 package com.keepreading.springbootlibrary.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.keepreading.springbootlibrary.entity.Book;
+import com.keepreading.springbootlibrary.responsemodels.ShelfCurrentLoansResponse;
 import com.keepreading.springbootlibrary.service.BookService;
 import com.keepreading.springbootlibrary.utils.ExtractJWT;
 
@@ -20,6 +23,12 @@ public class BookController {
 
 	@Autowired
 	private BookService bookService;
+	
+	@GetMapping("/secure/currentloans")
+	public List<ShelfCurrentLoansResponse> currentLoans(@RequestHeader(value = "Authorization") String token,@RequestParam Long bookId) throws Exception {
+		String userEmail = ExtractJWT.payloadJWTExtraction(token, "\"sub\"");
+		return bookService.currentLoans(userEmail);
+	}
 	
 	@PutMapping("/secure/checkout")
 	public Book checkoutBook(@RequestHeader(value = "Authorization") String token,@RequestParam Long bookId) throws Exception {

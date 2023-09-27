@@ -40,7 +40,7 @@ export const ShelfPage = () => {
 						<p>Loans</p>
 					</div>
 					<div
-						className="tab-pane fade show active"
+						className="tab-pane fade"
 						id="nav-history"
 						role="tabpanel"
 						aria-labelledby="nav-history-tab"
