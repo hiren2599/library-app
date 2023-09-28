@@ -11,7 +11,7 @@ export const HistoryPage = () => {
 
 	// Histories
 	const [histories, setHistories] = useState<HistoryModel[]>([]);
-	const [isLoadingHistory, setIsLoadingHistoy] = useState(true);
+	const [isLoadingHistory, setIsLoadingHistory] = useState(true);
 
 	// Pagination
 	const [currentPage, setCurrentPage] = useState(1);
@@ -42,13 +42,14 @@ export const HistoryPage = () => {
 				setHistories(historyResponseJson._embedded.histories);
 				setTotalPages(historyResponseJson.page.totalPages);
 			}
-			setIsLoadingHistoy(false);
+			setIsLoadingHistory(false);
 		};
 
 		fetchHistory().catch((error) => {
-			setIsLoadingHistoy(false);
+			setIsLoadingHistory(false);
 			setHttpError(error);
 		});
+		window.scrollTo(0, 0);
 	}, [authState, currentPage]);
 
 	if (isLoadingHistory) {
