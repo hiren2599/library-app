@@ -14,8 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.keepreading.springbootlibrary.dao.BookRepository;
 import com.keepreading.springbootlibrary.dao.CheckoutRepository;
+import com.keepreading.springbootlibrary.dao.HistoryRepository;
 import com.keepreading.springbootlibrary.entity.Book;
 import com.keepreading.springbootlibrary.entity.Checkout;
+import com.keepreading.springbootlibrary.entity.History;
 import com.keepreading.springbootlibrary.responsemodels.ShelfCurrentLoansResponse;
 
 @Service
@@ -27,6 +29,9 @@ public class BookService {
 	
 	@Autowired
 	private CheckoutRepository checkoutRepository;
+	
+	@Autowired
+	private HistoryRepository historyRepository;
 	
 	public Book checkoutBook(String userEmail, Long bookId) throws Exception {
 		Optional<Book> book = bookRepository.findById(bookId);
@@ -101,6 +106,17 @@ public class BookService {
 		bookRepository.save(book.get());
 		
 		checkoutRepository.deleteById(validateCheckout.getId());
+		
+		History history = new History(
+				userEmail,
+				validateCheckout.getCheckoutDate(),
+				LocalDate.now().toString(),
+				book.get().getTitle(),
+				book.get().getAuthor(),
+				book.get().getDescription(),
+				book.get().getImg()
+		);
+		historyRepository.save(history);
 	}
 	
 	public void renewBook(String userEmail, Long bookId) throws Exception {
