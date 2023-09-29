@@ -189,6 +189,7 @@ export const AddNewBook = () => {
 								required
 								onChange={(e) => setCopies(Number(e.target.value))}
 								value={copies}
+								min={0}
 							/>
 						</div>
 						<input type="file" onChange={(e) => base64ConversionForImages(e)} />
