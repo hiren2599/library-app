@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -54,6 +55,16 @@ public class PaymentService {
 		payment.setAmount(0.0);
 		paymentRepository.save(payment);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	public Payment getPaymentByEmail(String userEmail) throws Exception {
+		Payment payment = paymentRepository.findByUserEmail(userEmail);
+		
+		if(payment == null) {
+			throw new Exception("Something went wrong");
+		}
+		
+		return payment;
 	}
 
 }
