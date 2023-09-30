@@ -14,7 +14,7 @@ import com.keepreading.springbootlibrary.requestmodels.AdminQuestionRequest;
 import com.keepreading.springbootlibrary.service.MessageService;
 import com.keepreading.springbootlibrary.utils.ExtractJWT;
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://localhost:3000")
 @RestController
 @RequestMapping("/api/messages")
 public class MessageController {

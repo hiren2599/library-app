@@ -16,7 +16,7 @@ import com.keepreading.springbootlibrary.responsemodels.ShelfCurrentLoansRespons
 import com.keepreading.springbootlibrary.service.BookService;
 import com.keepreading.springbootlibrary.utils.ExtractJWT;
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://localhost:3000")
 @RestController
 @RequestMapping("/api/books")
 public class BookController {

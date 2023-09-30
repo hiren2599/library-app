@@ -15,7 +15,7 @@ import com.keepreading.springbootlibrary.requestmodels.AddBookRequest;
 import com.keepreading.springbootlibrary.service.AdminService;
 import com.keepreading.springbootlibrary.utils.ExtractJWT;
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://localhost:3000")
 @RestController
 @RequestMapping("/api/admin")
 public class AdminController {

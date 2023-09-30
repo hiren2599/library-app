@@ -13,7 +13,7 @@ import com.keepreading.springbootlibrary.entity.Review;
 @Configuration
 public class MyDataRestConfig implements RepositoryRestConfigurer {
 	
-	private String theAllowedOrigin = "http://localhost:3000";
+	private String theAllowedOrigin = "https://localhost:3000";
 	
 	@Override
 	public void configureRepositoryRestConfiguration(RepositoryRestConfiguration config, CorsRegistry cors) {

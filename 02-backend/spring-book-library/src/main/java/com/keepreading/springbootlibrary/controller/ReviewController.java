@@ -14,7 +14,7 @@ import com.keepreading.springbootlibrary.requestmodels.ReviewRequest;
 import com.keepreading.springbootlibrary.service.ReviewService;
 import com.keepreading.springbootlibrary.utils.ExtractJWT;
 
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin("https://localhost:3000")
 @RestController
 @RequestMapping("/api/reviews/")
 public class ReviewController {
